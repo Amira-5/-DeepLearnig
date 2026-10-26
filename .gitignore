@@ -4,7 +4,8 @@
 huggingface/
 
 # outputs
-outputs/
+outputs/logs/
+outputs/checkpoints/
 
 # models/checkpoints
 *.pt
@@ -17,5 +18,5 @@ wandb/
 # python
 __pycache__/
 *.pyc
-.venv/
+venv/
 .ipynb_checkpoints/
