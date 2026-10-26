@@ -1,0 +1,21 @@
+# data & cache (root only, so src/data stays tracked)
+/Data/
+.cache/
+huggingface/
+
+# outputs
+outputs/
+
+# models/checkpoints
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+mlruns/
+wandb/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
