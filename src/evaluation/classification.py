@@ -17,10 +17,11 @@ from .metrics import compute_classification_metrics
 def predict_loader(model, loader, device):
     model.eval()
     ys, ps = [], []
-    for x, y in loader:
-        logits = model(x.to(device))
+    for batch in loader:
+        x = batch["image"].to(device, non_blocking=True)
+        logits = model(x)
         ps.append(logits.argmax(dim=1).cpu().numpy())
-        ys.append(y.numpy())
+        ys.append(batch["label"].numpy())
     return np.concatenate(ys), np.concatenate(ps)
 
 
@@ -29,7 +30,7 @@ def evaluate_classification(cfg, split="test"):
 
     _, val_loader, test_loader = get_classification_loaders(
         batch_size=d["batch_size"], num_workers=d["num_workers"],
-        val_size=d["val_size"], seed=d["seed"], image_size=d["image_size"],
+        image_size=d["image_size"],
     )
     loader = test_loader if split == "test" else val_loader
 
