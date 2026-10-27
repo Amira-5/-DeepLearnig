@@ -3,6 +3,7 @@ from datasets import load_dataset
 from torch.utils.data import Dataset
 
 
+
 TRAIN_REPO = "Multimodal-Fatima/CUB_train"
 TEST_REPO = "Multimodal-Fatima/CUB_test"
 
@@ -57,3 +58,20 @@ class CUBDataset(Dataset):
             "file_name": sample["file_name"],
             "id": sample["id"],
         }
+
+class CUBDataset(Dataset):
+    """Classification dataset: returns (image_tensor, label)."""
+
+    def __init__(self, hf_dataset, transform=None):
+        self.data = hf_dataset
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        item = self.data[idx]
+        image = item["image"].convert("RGB")
+        if self.transform:
+            image = self.transform(image)
+        return image, item["label"]
