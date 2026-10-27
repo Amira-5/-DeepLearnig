@@ -23,8 +23,6 @@ def train_classification(cfg):
     train_loader, val_loader, _ = get_classification_loaders(
         batch_size=d["batch_size"],
         num_workers=d["num_workers"],
-        val_size=d["val_size"],
-        seed=d["seed"],
         image_size=d["image_size"],
     )
 

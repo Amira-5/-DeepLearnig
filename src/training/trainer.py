@@ -16,10 +16,11 @@ def run_epoch(model, loader, criterion, device, optimizer=None, max_batches=None
     total_loss, correct, seen = 0.0, 0, 0
 
     with torch.set_grad_enabled(training):
-        for b, (x, y) in enumerate(loader):
+        for b, batch in enumerate(loader):
             if max_batches is not None and b >= max_batches:
                 break
-            x, y = x.to(device), y.to(device)
+            x = batch["image"].to(device, non_blocking=True)
+            y = batch["label"].to(device, non_blocking=True)
 
             logits = model(x)
             loss = criterion(logits, y)
@@ -46,7 +47,7 @@ def fit(model, train_loader, val_loader, epochs=10, lr=1e-3, weight_decay=1e-4,
     optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
 
     history = {"train_loss": [], "train_acc": [], "val_loss": [], "val_acc": []}
-    best_val_acc = 0.0
+    best_val_acc = -1.0
 
     for epoch in range(1, epochs + 1):
         start = time.time()

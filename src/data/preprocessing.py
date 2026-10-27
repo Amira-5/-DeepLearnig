@@ -1,11 +1,9 @@
-
-
-
 from __future__ import annotations
 
 import hashlib
 import json
 import logging
+import os
 import re
 from collections import Counter
 from pathlib import Path
@@ -16,7 +14,6 @@ from datasets import load_dataset
 from PIL import Image
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
-
 
 
 # 1. Project Paths and Settings
@@ -31,6 +28,10 @@ IMAGES = PROC / "images"
 META = PROC / "metadata"
 REPORTS = ROOT / "outputs" / "eda"
 
+# Short cache path to avoid the Windows 260-character path limit.
+# Can be overridden with the HF_CACHE_DIR environment variable.
+HF_CACHE = os.environ.get("HF_CACHE_DIR", "C:/hf_cache")
+
 # Hugging Face dataset repositories
 TRAIN_REPO = "Multimodal-Fatima/CUB_train"
 TEST_REPO = "Multimodal-Fatima/CUB_test"
@@ -44,7 +45,6 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(levelname)s: %(message)s",
 )
-
 
 
 # 2. Caption Cleaning
@@ -71,9 +71,7 @@ def split_captions(description: Any) -> list[str]:
     ]
 
 
-
 # 3. Image Loading and Hashing
-
 
 def get_rgb(record):
     """Load an image and convert it to RGB."""
@@ -226,7 +224,6 @@ def scan(train_ds, test_ds):
                     "error": f"{type(exc).__name__}: {exc}",
                 })
 
-
     # Save EDA Reports
 
     # Save information about accepted images
@@ -347,9 +344,7 @@ def scan(train_ds, test_ds):
     return accepted, report
 
 
-
 # 5. Export Processed Images and Metadata
-
 
 def export_split(source, rows, name):
     """Save images and create metadata for one dataset split."""
@@ -429,7 +424,6 @@ def export_split(source, rows, name):
     return pd.DataFrame(output)
 
 
-
 # 6. Main Preprocessing Pipeline
 
 def main():
@@ -439,22 +433,26 @@ def main():
     for directory in (RAW, META, IMAGES, REPORTS):
         directory.mkdir(parents=True, exist_ok=True)
 
+    # Create the short HF cache directory
+    Path(HF_CACHE).mkdir(parents=True, exist_ok=True)
+
     # Load the original training and test datasets
     logging.info(
         "Loading official Hugging Face splits; "
-        "local cache will be reused."
+        "local cache (%s) will be reused.",
+        HF_CACHE,
     )
 
     train = load_dataset(
         TRAIN_REPO,
         split="train",
-        cache_dir=str(RAW / "hf_cache"),
+        cache_dir=HF_CACHE,
     )
 
     test = load_dataset(
         TEST_REPO,
         split="test",
-        cache_dir=str(RAW / "hf_cache"),
+        cache_dir=HF_CACHE,
     )
 
     # Scan the data, remove excluded records, and save EDA reports
@@ -527,9 +525,7 @@ def main():
             len(frame),
         )
 
-
     # Save Preprocessing Information
-  
 
     info = {
         "sources": {
@@ -579,9 +575,7 @@ def main():
     )
 
 
-
 # 7. Run the Pipeline
-
 
 if __name__ == "__main__":
     main()
