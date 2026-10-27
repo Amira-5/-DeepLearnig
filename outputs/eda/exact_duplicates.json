@@ -1,0 +1,11 @@
+[
+  {
+    "kept_split":"train",
+    "kept_index":1712,
+    "kept_file_name":"Pigeon_Guillemot_0018_40195.jpg",
+    "duplicate_split":"train",
+    "duplicate_index":1731,
+    "duplicate_file_name":"Pigeon_Guillemot_0081_40339.jpg",
+    "same_label":true
+  }
+]

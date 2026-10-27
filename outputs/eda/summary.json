@@ -1,0 +1,257 @@
+{
+  "source_train_images": 5994,
+  "source_test_images": 5794,
+  "accepted_unique_images": 11787,
+  "excluded_items": 1,
+  "unreadable_images": 0,
+  "missing_labels": 0,
+  "exact_duplicate_exclusions": 1,
+  "classes_observed": 200,
+  "unique_image_dimensions": 1152,
+  "most_common_dimensions": [
+    {
+      "width": 500,
+      "height": 333,
+      "count": 1820
+    },
+    {
+      "width": 500,
+      "height": 375,
+      "count": 1192
+    },
+    {
+      "width": 500,
+      "height": 400,
+      "count": 366
+    },
+    {
+      "width": 500,
+      "height": 334,
+      "count": 364
+    },
+    {
+      "width": 333,
+      "height": 500,
+      "count": 305
+    },
+    {
+      "width": 500,
+      "height": 357,
+      "count": 239
+    },
+    {
+      "width": 500,
+      "height": 332,
+      "count": 235
+    },
+    {
+      "width": 500,
+      "height": 500,
+      "count": 205
+    },
+    {
+      "width": 400,
+      "height": 500,
+      "count": 166
+    },
+    {
+      "width": 500,
+      "height": 335,
+      "count": 157
+    },
+    {
+      "width": 375,
+      "height": 500,
+      "count": 144
+    },
+    {
+      "width": 334,
+      "height": 500,
+      "count": 89
+    },
+    {
+      "width": 357,
+      "height": 500,
+      "count": 89
+    },
+    {
+      "width": 500,
+      "height": 376,
+      "count": 72
+    },
+    {
+      "width": 500,
+      "height": 354,
+      "count": 60
+    }
+  ],
+  "caption_count_distribution": {
+    "10": 11787
+  },
+  "caption_word_count_mean": 15.240617577197149,
+  "caption_vocabulary_size_lowercase": 6471,
+  "most_common_caption_words": [
+    [
+      "a",
+      178479
+    ],
+    [
+      "and",
+      163053
+    ],
+    [
+      "bird",
+      115498
+    ],
+    [
+      "with",
+      80569
+    ],
+    [
+      "has",
+      79796
+    ],
+    [
+      "black",
+      77888
+    ],
+    [
+      "this",
+      74326
+    ],
+    [
+      "white",
+      65286
+    ],
+    [
+      "brown",
+      42375
+    ],
+    [
+      "is",
+      41182
+    ],
+    [
+      "beak",
+      36926
+    ],
+    [
+      "belly",
+      34230
+    ],
+    [
+      "small",
+      33117
+    ],
+    [
+      "wings",
+      31264
+    ],
+    [
+      "yellow",
+      30807
+    ],
+    [
+      "the",
+      30216
+    ],
+    [
+      "bill",
+      29084
+    ],
+    [
+      "long",
+      21687
+    ],
+    [
+      "grey",
+      20378
+    ],
+    [
+      "breast",
+      20193
+    ],
+    [
+      "crown",
+      20016
+    ],
+    [
+      "that",
+      19718
+    ],
+    [
+      "head",
+      18912
+    ],
+    [
+      "its",
+      15853
+    ],
+    [
+      "are",
+      14491
+    ],
+    [
+      "short",
+      13947
+    ],
+    [
+      "on",
+      13869
+    ],
+    [
+      "orange",
+      13706
+    ],
+    [
+      "gray",
+      13436
+    ],
+    [
+      "body",
+      13385
+    ],
+    [
+      "red",
+      13000
+    ],
+    [
+      "feathers",
+      10794
+    ],
+    [
+      "of",
+      10267
+    ],
+    [
+      "throat",
+      9929
+    ],
+    [
+      "blue",
+      9414
+    ],
+    [
+      "large",
+      9118
+    ],
+    [
+      "in",
+      8773
+    ],
+    [
+      "tail",
+      8476
+    ],
+    [
+      "pointed",
+      8371
+    ],
+    [
+      "very",
+      8030
+    ]
+  ],
+  "caption_cleaning": "Split newline, normalize whitespace, remove blank captions; no guessed spelling corrections",
+  "duplicate_policy": "Exact RGB pixel hash; first encountered copy retained; train scanned before test"
+}

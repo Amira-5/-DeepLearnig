@@ -1,0 +1,28 @@
+[
+  {
+    "source_split":"train",
+    "source_index":1731,
+    "image_id":"1731",
+    "file_name":"Pigeon_Guillemot_0081_40339.jpg",
+    "label":57,
+    "captions":[
+      "this bird has a black belly, breast and head, gray and white wings, and red tarsus and feet.",
+      "this bird has a black body, black and white wings, and large orange webbed feet.",
+      "this is a black bird with tan and white coverts and large orange feet.",
+      "this mostly black water bird has bright red legs and brown wings with white coverts.",
+      "this bird has a bright red feet and tarsus with its body mostly colored in black.",
+      "this bird has wings that are black and white with orange feet",
+      "this bird has wings that are black and has red feet",
+      "this bird has wings that are black and has red feet",
+      "this bird is black with white and has a long, pointy beak.",
+      "a long black bird with red legs and white and gray wings."
+    ],
+    "width":500,
+    "height":333,
+    "pixel_sha256":"197253b5d024073861ec864a2a1845799d02fd0a546f998e0d2b94d124f54ea8",
+    "caption_count":10,
+    "reason":"exact_pixel_duplicate",
+    "duplicate_of_split":"train",
+    "duplicate_of_index":1712
+  }
+]
