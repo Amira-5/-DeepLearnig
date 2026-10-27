@@ -21,7 +21,7 @@ def main():
     eval_p = sub.add_parser("evaluate", help="Evaluate a trained model")
     eval_p.add_argument("--task", required=True, choices=["classification"])
     eval_p.add_argument("--config", required=True)
-    eval_p.add_argument("--split", default="test", choices=["val", "test"])
+    eval_p.add_argument("--split", default="val", choices=["val", "test"])
 
     args = parser.parse_args()
     cfg = load_config(args.config)
