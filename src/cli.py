@@ -18,18 +18,27 @@ def main():
     train_p.add_argument("--epochs", type=int, default=None)
     train_p.add_argument("--max-batches", type=int, default=None)
 
+    eval_p = sub.add_parser("evaluate", help="Evaluate a trained model")
+    eval_p.add_argument("--task", required=True, choices=["classification"])
+    eval_p.add_argument("--config", required=True)
+    eval_p.add_argument("--split", default="test", choices=["val", "test"])
+
     args = parser.parse_args()
+    cfg = load_config(args.config)
 
     if args.command == "train":
-        cfg = load_config(args.config)
         if args.epochs is not None:
             cfg["train"]["epochs"] = args.epochs
         if args.max_batches is not None:
             cfg["train"]["max_batches"] = args.max_batches
-
         if args.task == "classification":
             from src.training.classification import train_classification
             train_classification(cfg)
+
+    elif args.command == "evaluate":
+        if args.task == "classification":
+            from src.evaluation.classification import evaluate_classification
+            evaluate_classification(cfg, split=args.split)
 
 
 if __name__ == "__main__":
