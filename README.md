@@ -76,7 +76,7 @@ DeepLearning-Project/
 
 1. **Clone the Repository:**
    ```powershell
-   git clone https://github.com/YourTeam/DeepLearning-Project.git
+   git clone https://github.com/Amira-5/-DeepLearnig.git
    cd DeepLearning-Project
    ```
 
